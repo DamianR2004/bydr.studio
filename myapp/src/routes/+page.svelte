@@ -1,7 +1,6 @@
 <section>
   <img src="/images/bydr.svg" alt="Logo van bydr.studio" width="150" />
   <h1>Nieuwe website in constructie 🚧</h1>
-  <video src="/images/placeholder.mp4" autoplay loop muted></video>
 </section>
 
 <style>
@@ -10,6 +9,9 @@ section{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #161616;
+    height: 100dvh;
+    width: 100dvw;
   }
 
   img{
@@ -18,17 +20,9 @@ section{
     z-index: 1;
   }
   h1{
-    position: absolute;
+    align-items: center;
     color: white;
     z-index: 1;
     font-size: 5vw;
-  }
-
-  video{
-    filter: blur(2px) ;
-    width: 100dvw;
-    height: 100dvh;
-    object-fit: cover;
-    z-index: -1;
-  }
+  } 
 </style>
