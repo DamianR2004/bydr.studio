@@ -1,29 +1,26 @@
 <section>
-  <h1>Nieuwe website is onderweg!</h1>
-  <h2>bydr<span>.</span>studio</h2>
+    <h1>Nieuwe website is onderweg!</h1>
+    <img src="/bydrstudio.svg" alt="Logo van bydr.studio">
+    <h2>bydr<span>.</span>studio</h2>
 </section>
-
-<video src="/bckg.mp4" autoplay muted loop></video>
 
 <style>
   section{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-
-  video{
-    max-width: 100vw;
-    height: auto;
-    object-fit: cover;
-    position: relative;
-    z-index: -1;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #161616;
   }
 
   h1, h2{
-    font-size: 3rem;
+    font-size: 5.5vw;
     color: white;
-    position: absolute;
+  }
+
+  img{
+    height: 50vh;
   }
 
   span{
