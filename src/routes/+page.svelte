@@ -1,7 +1,8 @@
 <section>
-    <h1>Nieuwe website is onderweg!</h1>
+    <p>Nieuwe website is onderweg!</p>
     <img src="/bydrstudio.svg" alt="Logo van bydr.studio">
-    <h2>bydr<span>.</span>studio</h2>
+    <h1>bydr<span>.</span>studio</h1>
+    <h2>Testrun</h2>
 </section>
 
 <style>
@@ -11,12 +12,12 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background-color: #161616;
+    background-color: var(--color-bg);
   }
 
-  h1, h2{
+  h1{
     font-size: 5.5vw;
-    color: white;
+    color: var(--color-text);
   }
 
   img{
