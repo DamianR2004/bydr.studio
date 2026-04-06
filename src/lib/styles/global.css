@@ -76,7 +76,7 @@ html, body {
 h1 {
     font-family: var(--font-heading);
     line-height: var(--line-height-heading);
-    font-size: var(--font-size-heading-huge);
+    font-size: var(--font-size-heading-large);
 }
 
 h2, h3{
