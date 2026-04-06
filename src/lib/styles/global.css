@@ -1,20 +1,20 @@
 @font-face {
     font-family: "Syne";
-    src: url(/fonts/syne-medium.woff2) format("woff2");
+    src: url(../fonts/syne-medium.woff2) format("woff2");
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Syne";
-    src: url(/fonts/syne-extrabold.woff2) format("woff2");
+    src: url(../fonts/syne-extrabold.woff2) format("woff2");
     font-weight: 800;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Atkinson Hyperlegible";
-    src: url(/fonts/athy.woff2) format("woff2");
+    src: url(../fonts/athy.woff2) format("woff2");
     font-weight: 400;
     font-display: swap;
 }
