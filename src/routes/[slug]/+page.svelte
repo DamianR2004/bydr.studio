@@ -1,78 +1,53 @@
 <script>
   import { urlFor } from '$lib/sanity';
-
+  import { PortableText } from '@portabletext/svelte';
+  import Badge from '$lib/atoms/Badge.svelte';
+  
   let { data } = $props();
-  const { project } = data;
 </script>
 
 <article class="project-view">
-  <header>
-    <h1>{project.title}</h1>
-    <div class="meta">
-      <p class="year">{project.year}</p>
+  {#if data.project}
+    <header>
+      <h1>{data.project.title} ({data.project.year})</h1>
       
-      {#if project.stack}
-        <div class="stack-list">
-          {#each project.stack as tech}
-            <span class="tech-badge">{tech}</span>
+      {#if data.project.stack}
+        <div class="badges">
+          {#each data.project.stack as tech}
+            <Badge text={tech} />
           {/each}
         </div>
       {/if}
-    </div>
-  </header>
+    </header>
 
-  {#if project.gallery}
-    <section class="gallery">
-      {#each project.gallery as img}
-        <img 
-          src={urlFor(img).width(1200).auto('format').url()} 
-          alt="Project showcase for {project.title}"
-          loading="lazy"
-        />
-      {/each}
-    </section>
+    {#if data.project.intro}
+      <section class="text-block">
+        <PortableText value={data.project.intro} />
+      </section>
+    {/if}
+
+    {#if data.project.gallery}
+      <section class="gallery">
+        {#each data.project.gallery as img}
+          <img src={urlFor(img).width(1200).url()} alt="" />
+        {/each}
+      </section>
+    {/if}
+
+    {#if data.project.outro}
+      <section class="text-block">
+        <PortableText value={data.project.outro} />
+      </section>
+    {/if}
+  {:else}
+    <p>Laden...</p>
   {/if}
 </article>
 
 <style>
-  .project-view {
-    max-width: 1000px; /* Widened slightly for better image display */
-    margin: 4rem auto;
-    padding: 1rem;
-  }
-
-  .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-  }
-
-  .year { color: #666; font-size: 1.2rem; margin: 0; }
-
-  .tech-badge { 
-    background: #000; 
-    color: #fff; 
-    padding: 4px 12px; 
-    margin-left: 8px; 
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 2px;
-  }
-
-  /* 3. Style the gallery to stack images beautifully */
-  .gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* This adds a slight "premium" look to your portfolio photos */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  }
+  .project-view { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
+  .badges { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; color: black; }
+  .gallery { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
+  img { width: 100%; height: auto; display: block; }
+  .text-block { margin: 2rem 0; line-height: 1.6; }
 </style>

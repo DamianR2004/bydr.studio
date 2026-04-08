@@ -3,47 +3,43 @@ export default {
   title: 'Project',
   type: 'document',
   fields: [
+    { name: 'title', title: 'Project Name', type: 'string' },
+    { name: 'year', title: 'Project Year', type: 'string' },
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
+    // BOVENKANT
     {
-      name: 'title',
-      title: 'Project Name',
-      type: 'string',
-    },
-    {
-      name: 'year',
-      title: 'Project Year',
-      type: 'string', // Use string so you can write "2024" or "2024—2026"
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: { source: 'title' },
-    },
-    {
-      name: 'description',
-      title: 'About the Project',
+      name: 'intro',
+      title: 'Introductie (Boven de beelden)',
       type: 'array',
-      of: [{ type: 'block' }], // This is for the "Text about the project"
+      of: [{ type: 'block' }], 
     },
+    // MIDDEN
     {
       name: 'gallery',
       title: 'Project Images',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }], // Multiple images!
+      of: [{ type: 'image', options: { hotspot: true } }], 
+    },
+    // ONDERKANT
+    {
+      name: 'outro',
+      title: 'Outro (Onder de beelden)',
+      type: 'array',
+      of: [{ type: 'block' }], 
     },
     {
       name: 'stack',
-      title: 'Jamstack Tools (Badges)',
+      title: 'Jamstack Tools',
       type: 'array',
       of: [{ type: 'string' }],
       options: {
-        layout: 'tags', // Makes it look like badges in the CMS
+        layout: 'tags', 
         list: [
-          { title: 'SvelteKit', value: 'sveltekit' },
-          { title: 'Sanity', value: 'sanity' },
-          { title: 'Vercel', value: 'vercel' },
-          { title: 'Directus', value: 'directus' },
-          { title: 'Netlify', value: 'netlify' },
+          { title: 'SvelteKit', value: 'SvelteKit' },
+          { title: 'Sanity', value: 'Sanity' },
+          { title: 'Vercel', value: 'Vercel' },
+          { title: 'Directus', value: 'Directus' },
+          { title: 'Netlify', value: 'Netlify' },
         ]
       }
     },

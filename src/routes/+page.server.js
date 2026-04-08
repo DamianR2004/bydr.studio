@@ -1,18 +1,24 @@
 import { client } from "$lib/sanity";
 
 export async function load() {
-  // 1. Change _type to "project"
-  // 2. We pull the specific fields needed for the list view
-  const query = `*[_type == "project" && defined(slug.current)] | order(year desc)[0...12]{
+  const query = `*[_type == "project"] | order(year desc) {
     title,
     year,
-    stack,
-    "slug": slug.current
+    "slug": slug.current,
+    "mainImage": gallery[0].asset->url,
+    stack
   }`;
-  
-  const projects = await client.fetch(query);
 
-  return {
-    projects // Returning "projects" makes more sense than "posts"
-  };
+  try {
+    const projects = await client.fetch(query);
+    return {
+      projects
+    };
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return {
+      projects: [],
+      error: "Kon projecten niet laden"
+    };
+  }
 }
