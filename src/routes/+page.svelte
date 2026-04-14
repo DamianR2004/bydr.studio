@@ -1,6 +1,6 @@
 <script>
   import ProjectMeta from '$lib/molecules/ProjectMeta.svelte'; 
-  
+  import {Faq} from "$lib/index.js"; 
   let { data } = $props();
 </script>
 
@@ -11,6 +11,7 @@
       <ProjectMeta {project} />
     {/each}
   </ul>
+  <Faq/>
 </main>
 
 <style>
