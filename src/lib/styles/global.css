@@ -51,10 +51,10 @@
 
 @supports (color: oklch(0 0 0)) {
   :root {
-    --color-bg: oklch(17.3% 0 0);
-    --color-text: oklch(98.5% 0 0);
-    --color-secondary: oklch(67.5% 0.194 53.6);
-    --color-tertiary: oklch(53.1% 0.173 260.3);
+    --color-bg: oklch(16.376% 0.00002 271.152);
+    --color-text: oklch(98.511% 0.00011 271.152);
+    --color-secondary: oklch(70.297% 0.18326 50.968);
+    --color-tertiary: #0073e6;
     --color-quaternary: oklch(68.9% 0.158 158.4);
   }
 }
