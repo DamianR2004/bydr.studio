@@ -59,7 +59,7 @@
   }
 }
 
-* {
+*{
     box-sizing: border-box;
 }
 
@@ -76,7 +76,6 @@ html, body {
 h1 {
     font-family: var(--font-heading);
     line-height: var(--line-height-heading);
-    font-size: var(--font-size-heading-large);
 }
 
 h2, h3{
@@ -84,4 +83,8 @@ h2, h3{
     font-weight: 500;
     line-height: var(--line-height-heading);
     font-size: var(--font-size-heading);
+}
+
+section {
+     padding: 5%;
 }
