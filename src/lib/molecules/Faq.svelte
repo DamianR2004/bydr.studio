@@ -1,75 +1,100 @@
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+  // We use $effect to ensure the DOM is ready for GSAP
+  $effect(() => {
+    const details = document.querySelectorAll("details");
+
+    details.forEach((detail) => {
+      const summary = detail.querySelector("summary");
+      const content = detail.querySelector(".content");
+
+      // Create the animation
+      const animation = gsap.from(content, {
+        height: 0,
+        autoAlpha: 0,
+        paddingBottom: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+        paused: true,
+        // Crucial: Refresh ScrollTrigger/Smoother when animation updates
+        onUpdate: () => ScrollTrigger.refresh()
+      });
+
+      summary.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (!detail.open) {
+          detail.open = true;
+          animation.play();
+        } else {
+          // Play reverse and then close the native attribute
+          animation.reverse().then(() => {
+            detail.open = false;
+          });
+        }
+      });
+    });
+  });
+</script>
+
 <section>
-    <h2>Veelgestelde vragen</h2>
-        <ul>
-            <li>
-                <details>
-                    <summary>Wat zijn de kosten van een website?</summary>
-                    <p></p>
-                </details>
-            </li>
-            <li>
-                <details>
-                    <summary>Wat onderscheidt jou van anderen?</summary>
-                    <p></p>
-                </details>
-            </li>   
-            <li>
-                <details>
-                    <summary>Kan ik later eigen content aan de site toevoegen?</summary>
-                    <p></p>
-                </details>
-            </li>
-            <li>
-                <details>
-                    <summary>Werkt mijn website ook goed op mobiel?</summary>
-                    <p></p>
-                </details>
-            </li>
-        </ul>
+  <h2>Veelgestelde vragen</h2>
+  <ul>
+    <li>
+      <details>
+        <summary>Wat zijn de kosten van een website?</summary>
+        <div class="content">
+          <div class="wrapper">
+            <p>De kosten variëren per project, afhankelijk van uw specifieke wensen.</p>
+          </div>
+        </div>
+      </details>
+    </li>
+    <!-- Add more items here -->
+  </ul>
 </section>
 
 <style>
+  li { list-style: none; }
 
-li{
+  details {
+    border-bottom: 1px solid var(--color-secondary, #333);
+    margin-block: 0.5rem;
+  }
+
+  summary {
     list-style: none;
-}
-
-details {
-  border-block-end: 1px solid var(--color-secondary);
-  margin-block: .5rem;
-  padding-block: .5rem;
-}
-
-summary {
-  position: relative;
-  anchor-name: --summary;
-  
-  &::marker {
-    content: "";
+    padding: 1rem 0;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
   }
-  
-  &::before,
-  &::after {
-    content: "";
-    border-block-start: 3px solid var(--color-secondary);
-    height: 0;
-    width: 1rem;
-    
-    inset-block-start: 50%;
-    inset-inline-end: 0;
-    
+
+  /* Remove default arrow */
+  summary::-webkit-details-marker { display: none; }
+
+  /* Content wrapper for smooth animation */
+  .content {
+    overflow: hidden;
+    visibility: hidden; /* Prevent flash of content */
+  }
+
+  .wrapper {
+    padding-bottom: 1.5rem;
+  }
+
+  /* Simple Plus/Minus toggle using CSS variables or transforms */
+  summary::after {
+    content: '+';
     position: absolute;
-    position-anchor: --summary;
-    position-area: top end;
+    right: 0;
+    transition: transform 0.3s ease;
   }
-  
-  &::after {
-    transform: rotate(90deg);
-    transform-origin: 50%;
-  }
-}
 
-details[open] summary::after {
-  transform: rotate(0deg);
-}
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
 </style>
