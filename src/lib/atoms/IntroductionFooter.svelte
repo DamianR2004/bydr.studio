@@ -92,7 +92,7 @@
     <section bind:this={container}>
         {#each repetitions as _}
         <p>
-            dé studio gefocust op het maken van toegankelijke, creatieve én impactvolle oplossingen voor het web.
+            dé studio gefocust op het maken van toegankelijke én creatieve digitale oplossingen.
         </p>
         {/each}
     </section>
@@ -110,15 +110,14 @@
     section {
         display: flex;
         flex-wrap: nowrap; 
-        will-change: transform; /* Optimalisatie voor browser rendering */
+        will-change: transform;
     }
 
     p {
         white-space: nowrap;
-        font-size: 100px;
+        font-size: 12vw;
         margin: 0 30px 0 0;
         flex-shrink: 0; 
-        /* Voorkom dat browser selectie de layout beïnvloedt */
         user-select: none;
     }
 </style>

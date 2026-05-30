@@ -9,13 +9,11 @@
       const summary = el.querySelector("summary");
 
       summary.onclick = (e) => {
-        e.preventDefault(); // Stop the instant snap toggle
+        e.preventDefault(); 
         
         const isOpen = el.hasAttribute("open");
         const summaryHeight = summary.offsetHeight;
         
-        // If we are opening, we must set the attribute first so the 
-        // browser calculates the inner text's height (scrollHeight)
         if (!isOpen) el.setAttribute("open", "");
         const fullHeight = el.scrollHeight;
 
@@ -25,11 +23,10 @@
             height: isOpen ? summaryHeight : fullHeight,
             duration: 0.25,
             ease: "expo.out",
-            overwrite: true, // Prevents glitches if clicked rapidly
+            overwrite: true,
             onUpdate: () => ScrollTrigger.refresh(),
             onComplete: () => {
               if (isOpen) el.removeAttribute("open");
-              // Remove the fixed height so it stays responsive to window resizes
               gsap.set(el, { clearProps: "height" });
             }
           }
@@ -70,23 +67,32 @@
 </section>
 
 <style>
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
   li { 
     list-style: none; 
   }
 
   details {
-    border-bottom: 5px solid var(--color-secondary);
+    border-bottom: 3px solid var(--color-secondary, #000);
     overflow: hidden; 
-    font-size: 30px;
   }
 
   summary {
     list-style: none;
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
     cursor: pointer;
     position: relative;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 1.3rem; 
   }
 
   summary::-webkit-details-marker { 
@@ -94,8 +100,8 @@
   }
 
   p {
-    margin: 0;
-    padding-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-text); 
   }
 
   summary::after {
@@ -105,9 +111,45 @@
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    font-size: 1.75rem;
+    font-weight: 400;
   }
 
   details[open] summary::after {
     transform: translateY(-50%) rotate(45deg);
+  }
+
+  @media (min-width: 768px) {
+
+    h2 {
+      font-size: 5rem;
+    }
+    summary {
+      font-size: 2.5rem;
+      padding: 2rem 0;
+      padding-right: 4rem;
+    }
+    p {
+      font-size: 2rem; 
+    }
+
+  summary::after {
+    font-size: 4rem;
+  }
+
+  }
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 6rem;
+    }
+
+    summary {
+      font-size: 3rem;
+      transition: .25s;
+    }
+
+    summary:hover {
+      color: var(--color-secondary); 
+    }
   }
 </style>
