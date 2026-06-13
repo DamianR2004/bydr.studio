@@ -2,14 +2,13 @@
   let { text } = $props();
 </script>
 
-<span class="badge">{text}</span>
+<span>{text}</span>
 
 <style>
-  .badge {
+  span {
     padding: 0.2rem 0.6rem;
     background: #eee;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1rem;
   }
 </style>
