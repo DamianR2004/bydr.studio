@@ -127,8 +127,8 @@
     summary {
       font-size: 2.5rem;
       padding: 2rem 0;
-      padding-right: 4rem;
     }
+    
     p {
       font-size: 2rem; 
     }
@@ -144,8 +144,12 @@
     }
 
     summary {
-      font-size: 3rem;
+      font-size: 2.5rem;
       transition: .25s;
+    }
+
+     p {
+      font-size: 1.7rem;
     }
 
     summary:hover {

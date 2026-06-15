@@ -59,9 +59,6 @@
 </section>
 
 <style>
-  section{
-     padding: 0;
-  }
 
   span{
     display: inline-block;
@@ -89,6 +86,7 @@
 
   ul{
     list-style: none;
+    padding: 0;
   }
 
   #contact h3{

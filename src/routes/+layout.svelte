@@ -19,8 +19,23 @@
       content: '#smooth-content',
       smooth: 1.5,
       effects: true
+    });
+
+    const geluid = new Audio('$lib/sounds/scrolls.wav');
+
+    const speelGeluidAf = (e) => {
+      if (e.target.closest('a')) {
+        geluid.currentTime = 0;
+        geluid.play().catch(() => {}); 
+      }
+    };
+
+    document.addEventListener('mouseover', speelGeluidAf);
+
+    return () => {
+      document.removeEventListener('mouseover', speelGeluidAf);
+    };
   });
-  })
 </script>
 
 <svelte:head>

@@ -6,9 +6,11 @@
 
 <style>
   span {
-    padding: 0.2rem 0.6rem;
-    background: #eee;
-    border-radius: 10px;
-    font-size: 1rem;
+    color: white;
+    font-size: 1.5em;
+  }
+
+  span:not(:last-child)::after {
+    content: ", ";
   }
 </style>

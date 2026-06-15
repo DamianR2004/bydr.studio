@@ -82,9 +82,10 @@ h2, h3, h4{
     font-family: var(--font-heading);
     font-weight: 500;
     line-height: var(--line-height-heading);
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 section {
-     padding: 5%;
+     padding: 0 5%;
 }
+
