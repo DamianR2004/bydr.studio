@@ -3,11 +3,11 @@
   let { projects } = $props(); 
 </script>
 
-<section>
+<section class="revealsection">
   <h2>Recente Projecten</h2>
 </section>
 
-<ul>
+<ul class="revealsection">
   {#each projects as project}
     <li>
       <a href="/{project.slug}">

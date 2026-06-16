@@ -2,6 +2,7 @@
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
   import { ScrollSmoother } from "gsap/dist/ScrollSmoother"; 
+  import { SplitText } from "gsap/dist/SplitText"; 
   
   import syneMedium from '$lib/fonts/syne-medium.woff2';
   import syneExtraBold from '$lib/fonts/syne-extrabold.woff2';
@@ -12,6 +13,23 @@
   import { Geluid, Cursor } from "$lib/index.js"; 
 
   let { children } = $props();
+
+$effect(() => {
+    const revealSections = document.querySelectorAll('.revealsection');
+    
+    revealSections.forEach((el) => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 85%', 
+                toggleActions: "play none none reverse" 
+            },
+            y: 50,    
+            opacity: 0,         
+            duration: 1,        
+            ease: "power3.out"  
+        });
+    });
 
   $effect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -66,6 +84,7 @@
       if (smoother) smoother.kill();
     };
   });
+});
 </script>
 
 <svelte:head>

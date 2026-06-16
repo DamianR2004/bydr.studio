@@ -1,10 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
+  let timeString = $state("");
+  let isBeschikbaar = $state(true);
 
-  let timeString = "";
-  let isBeschikbaar = true;
-
-  onMount(() => {
+  $effect(() => {
     function refreshTime() {
       timeString = new Date().toLocaleString("nl-NL", {
         timeZone: "Europe/Amsterdam",
@@ -16,11 +14,12 @@
     refreshTime();
     const interval = setInterval(refreshTime, 1000);
 
+    // Svelte 5 effect cleanup
     return () => clearInterval(interval);
   });
 </script>
 
-<section id="contact">
+<section class="revealsection" id="contact">
 <ul>
   <li>
     <h3>

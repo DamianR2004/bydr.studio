@@ -36,7 +36,7 @@
   });
 </script>
 
-<section>
+<section class="revealsection">
   <h2>Veelgestelde vragen</h2>
   <ul>
     <li>

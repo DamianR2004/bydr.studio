@@ -62,18 +62,19 @@ a:hover {
     background-color: var(--color-tertiary);
 }
 
+span{
+    color: var(--color-secondary);
+}
+
 ul li:nth-child(1) a:hover {
     scale: 1.05;
     background-color: transparent;
-
- & span{
-    color: var(--color-secondary);
-    transition: .25s;
- }
 }
 
 ul li:nth-child(5) a:hover {
     background-color: var(--color-secondary);
     color: black;
 }
+
+
 </style>
