@@ -10,14 +10,6 @@
   {#if data.project}
     <header>
       <h1>{data.project.title} ({data.project.year})</h1>
-      
-      {#if data.project.stack}
-        <div class="badges">
-          {#each data.project.stack as tech}
-            <Badge text={tech} />
-          {/each}
-        </div>
-      {/if}
     </header>
 
     {#if data.project.intro}
@@ -44,10 +36,3 @@
   {/if}
 </article>
 
-<style>
-  .project-view { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
-  .badges { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; color: black; }
-  .gallery { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
-  img { width: 100%; height: auto; display: block; }
-  .text-block { margin: 2rem 0; line-height: 1.6; }
-</style>

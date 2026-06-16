@@ -35,16 +35,16 @@
 <section>
   <ul>
     <li><h4>Sitemap</h4></li>
-    <li><a href="/">Home</a></li>
-    <li><a href="/projecten">Projecten</a></li>
-    <li><a href="/over">Over mij</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a class="footerlink" href="/">Home</a></li>
+    <li><a class="footerlink" href="/projecten">Projecten</a></li>
+    <li><a class="footerlink" href="/over">Over mij</a></li>
+    <li><a class="footerlink" href="#contact">Contact</a></li>
   </ul>
 
   <ul>
     <li><h4>Socials</h4></li>
-    <li><a href="https://www.linkedin.com/in/damianromeijn/">LinkedIN</a></li>
-    <li><a href="https://www.instagram.com/bydr.studio/">Instagram</a></li>
+    <li><a class="footerlink" href="https://www.linkedin.com/in/damianromeijn/">LinkedIN</a></li>
+    <li><a class="footerlink" href="https://www.instagram.com/bydr.studio/">Instagram</a></li>
   </ul>
 
   <ul>
@@ -70,7 +70,7 @@
   }
 
   span[data-beschikbaar="true"] {
-    background-color: #22c55e;
+    background-color: var(--color-quaternary);
     animation: blob 5s infinite;
   }
 

@@ -8,6 +8,9 @@
   import athy from '$lib/fonts/athy.woff2';
   import favicon from '$lib/assets/favicon.svg';
   import '$lib/styles/global.css';
+  
+
+  import { Geluid, Cursor } from "$lib/index.js"; 
 
   let { children } = $props();
 
@@ -21,10 +24,16 @@
       effects: true
     });
 
-    const geluid = new Audio('$lib/sounds/scrolls.wav');
+    const geluid = new Audio(Geluid);
 
     const speelGeluidAf = (e) => {
-      if (e.target.closest('a')) {
+      const link = e.target.closest('a');
+
+      if (link) {
+        if (e.relatedTarget && link.contains(e.relatedTarget)) {
+          return; 
+        }
+
         geluid.currentTime = 0;
         geluid.play().catch(() => {}); 
       }
@@ -51,3 +60,5 @@
     {@render children()}
   </div>
 </div>
+
+<Cursor />
