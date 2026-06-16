@@ -3,28 +3,24 @@
   import { gsap } from "gsap";
 
   let cursor;
-  let cursorText = "";
+  let cursorText = $state("");
 
   onMount(() => {
     const moveCursor = (e) => {
       gsap.to(cursor, { x: e.clientX, y: e.clientY, xPercent: -50, yPercent: -50, duration: 0.3 });
-    };
-    window.addEventListener("mousemove", moveCursor);
 
-    const interactiveSelector = "img, picture";
-    const interactives = document.querySelectorAll(interactiveSelector);
+      const figure = e.target.closest("figure");
 
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        cursorText = el.dataset.cursor || "";
+      if (figure) {
+        cursorText = figure.dataset.cursor || "";
         gsap.to(cursor, { scale: 3, duration: 0.3 });
-      });
-
-      el.addEventListener("mouseleave", () => {
+      } else {
         cursorText = "";
-        gsap.to(cursor, { scale: 1, duration: 0.3 });
-      });
-    });
+        gsap.to(cursor, { scale: .5, duration: 0.3 });
+      }
+    };
+
+    window.addEventListener("mousemove", moveCursor);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);

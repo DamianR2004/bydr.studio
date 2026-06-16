@@ -9,7 +9,6 @@
   import favicon from '$lib/assets/favicon.svg';
   import '$lib/styles/global.css';
   
-
   import { Geluid, Cursor } from "$lib/index.js"; 
 
   let { children } = $props();
@@ -23,6 +22,26 @@
       smooth: 1.5,
       effects: true
     });
+
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]');
+      
+      if (anchor) {
+        e.preventDefault();
+        e.stopPropagation(); 
+        
+        const target = anchor.getAttribute('href');
+        
+        if (target && target !== '#') {
+          const element = document.querySelector(target);
+          if (element) {
+            smoother.scrollTo(element, true, "top top");
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick, { capture: true });
 
     const geluid = new Audio(Geluid);
 
@@ -42,7 +61,9 @@
     document.addEventListener('mouseover', speelGeluidAf);
 
     return () => {
+      document.removeEventListener('click', handleAnchorClick, { capture: true });
       document.removeEventListener('mouseover', speelGeluidAf);
+      if (smoother) smoother.kill();
     };
   });
 </script>

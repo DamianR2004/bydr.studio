@@ -12,12 +12,11 @@
     <li>
       <a href="/{project.slug}">
         <article>
-          <figure>
+          <figure data-cursor="Klik!">
             <img 
               src="{project.mainImage}?w=400&h=400&fit=crop&auto=format" 
               alt="Cover voor {project.title}" 
               loading="lazy" 
-              data-cursor="Klik!"
             />
           </figure>
           

@@ -1,10 +1,18 @@
 <script>
   import { urlFor } from '$lib/sanity';
   import { PortableText } from '@portabletext/svelte';
-  import Badge from '$lib/atoms/Badge.svelte';
+  import { Footer } from "$lib/index.js"
   
   let { data } = $props();
 </script>
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/projecten">Projecten</a></li>
+    <li><span aria-current="page">{data.project.title}</span></li>
+  </ol>
+</nav>
 
 <article class="project-view">
   {#if data.project}
@@ -22,6 +30,7 @@
       <section class="gallery">
         {#each data.project.gallery as img}
           <img src={urlFor(img).width(1200).url()} alt="" />
+          <img src={urlFor(img).width(1200).url()} alt="" />
         {/each}
       </section>
     {/if}
@@ -36,3 +45,30 @@
   {/if}
 </article>
 
+<Footer/>
+
+<style>
+.breadcrumb {
+  padding: 5%;
+}
+
+a, span{
+  font-size: 1em;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: end;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 .75rem;
+  font-size: 1em;
+  content: ">";
+}
+</style>
